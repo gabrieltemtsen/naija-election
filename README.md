@@ -4,7 +4,7 @@ NaijaElection is a Solidity smart contract that replicates the Nigerian system o
 
 ## Overview
 
-NaijaElection is a blockchain-based voting system deployed on SwissTronik testnet leveraging it's cutting-edge tech on privacy designed to emulate the Nigerian electoral process. It includes the following key components:
+NaijaElection is a blockchain-based voting system deployed on SwissTronik testnet leveraging it's cutting-edge tech on privacy, designed to emulate the Nigerian electoral process. It includes the following key components:
 
 Parties: Parties participating in the election are registered with their names and start with zero votes.
 
