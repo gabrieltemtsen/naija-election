@@ -11,7 +11,6 @@ contract NaijaElection {
     address private INEC;
 
     struct Voter {
-        uint voteCount; // One Voter to One Vote == 1
         bool voted;     // if true, voter has voted
         uint voteIndex;  // index of the party to vote
         address pvc;     // permanent voters card- address or identity of the voter
@@ -52,7 +51,6 @@ contract NaijaElection {
        require(!voters[_voter].voted, "Voter has already voted");
 
        voters[_voter] = Voter({
-        voteCount: 0,
         voted: false,
         voteIndex: 0,
         pvc: _voter
@@ -60,15 +58,18 @@ contract NaijaElection {
     }
 
     function vote (uint _voteIndex) public  OnlyVoter {
-         require(!voters[msg.sender].voted, "Voter has already voted");
-        require(voters[msg.sender].voteCount > 0, "No votes left for this voter");
+        require(!voters[msg.sender].voted, "Voter has already voted");
         require(_voteIndex < parties.length, "Invalid party index");
 
         voters[msg.sender].voted = true;
-        voters[msg.sender].voteCount--;
         voters[msg.sender].voteIndex = _voteIndex;
 
         parties[_voteIndex].votesCount++;
 
     }
-}  
+
+    function getAllVoteCounts () public view returns(Party[] memory) {
+        return parties;
+    }
+}
+
